@@ -40,12 +40,12 @@ function RecipeCard({recipe, onDelete}) {
     <div className='bg-white dark:bg-gray-900 rounded-lg shadow-md dark:shadow-gray-700 overflow-hidden hover:shadow-lg transition duration-300 flex flex-col h-full'>
       <img src={imageUrl}
        alt={title}
-       className='w-full h-56 object-fill dark:text-gray-200 ' />
+       className='w-full h-56 object-fill dark:text-gray-200 sm:object-cover ' />
        <div className='p-4 flex  flex-col flex-1'>
-      <h1 className='text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2 line-clamp-2' >
+      <h1 className='text-lg sm:text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2 line-clamp-2' >
         {title}
         </h1>
-      <div className='flex flex-wrap gap-2 mb-4'>
+      <div className='flex flex-wrap gap-2 mb-4 text-sm sm:text-base'>
         {prepTime && prepTime !== "N/A" && (
       <span className='px-3 py-1 bg-gray-100 dark:bg-gray-600 dark:text-gray-100 rounded-full text-sm font-medium'>
         ⏱ {prepTime} mins
@@ -73,19 +73,19 @@ function RecipeCard({recipe, onDelete}) {
       </button>
       </Link>
       {isOwner ? (
-        <div>
+        <div className='flex gap-2 justify-center'>
         <Link to={`/edit-recipe/${id}`}>
       <button
       className='p-2 rounded-full bg-gray-100 dark:bg-gray-700'
       title='Edit Recipe'>
-        <FaEdit className='text-xl dark:text-gray-400'/>
+        <FaEdit className='text-lg sm:text-xl dark:text-gray-400'/>
       </button>
       </Link>
       <button
       onClick={() => onDelete(recipe.$id)}
       className='p-2 rounded-full bg-gray-100 dark:bg-gray-700'
       title='Delete Recipe'>
-        <FaTrash className='text-xl dark:text-gray-400'/>
+        <FaTrash className='text-lg sm:text-xl dark:text-gray-400'/>
       </button>
       </div>
        ) : (
@@ -93,9 +93,9 @@ function RecipeCard({recipe, onDelete}) {
         className='p-2 rounded-full bg-gray-100 dark:bg-gray-700'
         title={favorited ? "Remove from favorites" : "Add to favorites"}>
           {favorited ? (
-            <FaHeart className='text-red-500 text-xl'/>
+            <FaHeart className='text-red-500 text-lg sm:text-xl'/>
           ) : (
-            <FaRegHeart className='text-gray-500 text-xl' />
+            <FaRegHeart className='text-gray-500 text-lg sm:text-xl' />
           )}
         </button>
       )}
