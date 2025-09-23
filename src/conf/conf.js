@@ -8,6 +8,6 @@ const conf = {
     appwriteBucketId: String(import.meta.env.VITE_APPWRITE_BUCKET_ID),
     appwriteRecoveryUrl: "http://localhost:5173/reset-password",
 }
-console.log("load conf:", conf);
+console.log("conf:", conf);
 
 export default conf;
