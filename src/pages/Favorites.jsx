@@ -17,6 +17,7 @@ function Favorites() {
       const loadFavorites = async () => {
         if (!user || favorites.length === 0) {
           setFavRecipes([]);
+          setLoading(false);
           return;
         }
         try {
