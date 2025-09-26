@@ -101,7 +101,7 @@ function RecipeForm({recipe, cuisines = []}) {
     
   return (
     <>
-    <h1 className='text-xl font-bold dark:text-gray-100'>Add your favorite recipe.</h1>
+    <h1 className='text-xl font-bold dark:text-gray-100 mb-4'>Add your favorite recipe.</h1>
         <form onSubmit={handleSubmit(onSubmit)}
         className='mx-auto max-w-5xl'>
         <div className='grid grid-cols-1 lg:grid-cols-3 gap-6'>
@@ -134,7 +134,7 @@ function RecipeForm({recipe, cuisines = []}) {
                             bgColor='bg-gray-200'
                             textColor='text-gray-800'
                             onClick={() => remove(index)}
-                            className='shrink-0 dark:text-gray-900'>
+                            className='shrink-0 dark:text-gray-900 dark:bg-gray-400 font-semibold hover:bg-gray-300 dark:hover:bg-gray-500'>
                                 Remove
                             </Button>
                         </div>
@@ -159,7 +159,7 @@ function RecipeForm({recipe, cuisines = []}) {
                 <textarea 
                 rows={8}
             placeholder = 'Instructions'
-            className = 'w-full border border-gray-200 rounded-lg focus:outline-none p-3 focus:ring dark:bg-gray-600 dark:border-gray-400'
+            className = 'w-full border border-gray-200 rounded-lg focus:outline-none p-3 focus:ring dark:bg-gray-600 dark:border-gray-400 dark:text-gray-300'
             {...register("instruction",{required: "Instructions required"})}
             />
             {errors.instruction && (
