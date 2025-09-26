@@ -37,7 +37,9 @@ function Cuisines() {
     className='flex gap-4 px-4 py-2 overflow-x-auto scrollbar-hide scroll-smooth'
     ref={scrollRef}
     onMouseEnter={() => setIsHovered(true)}
-    onMouseLeave={() => setIsHovered(false)}>
+    onMouseLeave={() => setIsHovered(false)}
+    onTouchStart={() => setIsHovered(true)}
+    onTouchEnd={() => setIsHovered(false)}>
     {[...cuisines, ...cuisines].map((cuisine, index) => (
     <CuisinesCard
     key={`${cuisine.id}-${index}`}
