@@ -33,6 +33,7 @@ function RecipeCard({recipe, onDelete}) {
     ? recipe.costPerServing
     : null ;
     
+    
 
     const isOwner = !isSpoonacular && user && recipe.userId === user.$id;
     const favorited = isFavorite(id);

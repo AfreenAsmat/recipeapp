@@ -75,7 +75,7 @@ function Profile() {
                 You haven't added any recipes yet.
                 </p>
                 ) : (
-                     <div className='grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
+                     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
                 {userRecipes.map((recipe) => (
                     <RecipeCard 
                     key={recipe.$id} 

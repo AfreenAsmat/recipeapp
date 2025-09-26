@@ -13,15 +13,21 @@ function NavBar() {
   const {theme, toggleTheme} = useTheme();
   const user = useSelector((state) => state.auth.userData);
   const isLoggedIn = useSelector((state) => state.auth.status);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [desktopMenuOpen, setDesktopMenuOpen] = useState(false);
 
-  const menuRef = useRef(null);
+  const desktopMenuRef = useRef(null);
+  const mobileMenuRef = useRef(null);
 
   useEffect(() => {
     function handleClickOutside(event) {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
-        setMenuOpen(false);
+      if (desktopMenuRef.current && !desktopMenuRef.current.contains(event.target)) {
+        setDesktopMenuOpen(false);
       }
+       if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target)) {
+        setMobileMenuOpen(false);
+      }
+
     }
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
@@ -98,9 +104,9 @@ function NavBar() {
             </button>
             </Link>
           ) : (
-            <div className='relative' ref={menuRef}> 
+            <div className='relative hidden lg:block' ref={desktopMenuRef}> 
               <div 
-              onClick= {() => setMenuOpen(!menuOpen) }
+              onClick= {() => setDesktopMenuOpen(!desktopMenuOpen) }
               className='w-10 h-10 hidden lg:flex items-center justify-center rounded-full bg-blue-600 text-white font-semibold cursor-pointer'>
                 {user?.name && user.name.trim() !== ""
                 ? user.name[0].toUpperCase()
@@ -108,12 +114,12 @@ function NavBar() {
                 ? user.email[0].toUpperCase()
                 : "U"}
               </div>
-              {menuOpen && (
+              {desktopMenuOpen && (
                 <div className='absolute right-0 mt-2 w-40 bg-white dark:bg-gray-800 rounded-md shadow-lg p-2'>
                   <Link
                   to = '/profile'
                   className='block px-4 py-2 hover:text-blue-500'
-                  onClick={() => setMenuOpen(false)}>
+                  onClick={() => setDesktopMenuOpen(false)}>
                   Profile
                   </Link>
              <LogoutBtn />
@@ -126,7 +132,7 @@ function NavBar() {
           </div>
           {isOpen && (
             <div className= {`lg:hidden flex flex-col space-y-2 bg-white dark:bg-gray-900 shadow-md p-4
-            transition-all duration-300 ease-in-out overflow-hidden
+            transition-all duration-300 ease-in-out 
             ${isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}>
               <div className='flex justify-center sm:hidden '>
               <SearchBar />
@@ -175,9 +181,9 @@ function NavBar() {
             </button>
             </Link>
             ) : (
-               <div className='flex justify-center mt-2' ref={menuRef}> 
+               <div className='flex justify-center mt-2 relative' ref={mobileMenuRef}> 
               <div 
-              onClick= {() => setMenuOpen(!menuOpen) }
+              onClick= {() => setMobileMenuOpen(!mobileMenuOpen) }
               className='w-10 h-10 flex items-center justify-center rounded-full bg-blue-600 text-white font-semibold cursor-pointer'>
                 {user?.name && user.name.trim() !== ""
                 ? user.name[0].toUpperCase()
@@ -185,12 +191,12 @@ function NavBar() {
                 ? user.email[0].toUpperCase()
                 : "U"}
               </div>
-              {menuOpen && (
-                <div className='absolute mt-12 w-40 bg-white dark:bg-gray-800 rounded-md shadow-lg p-2 text-center'>
+              {mobileMenuOpen && (
+                <div className='absolute top-12 right-50 w-40 bg-white dark:bg-gray-800 rounded-md shadow-lg p-2 text-center z-50'>
                   <Link
                   to = '/profile'
                   className='block px-4 py-2 hover:text-blue-500'
-                  onClick={() => setMenuOpen(false)}>
+                  onClick={() => setMobileMenuOpen(false)}>
                   Profile
                   </Link>
              <LogoutBtn />

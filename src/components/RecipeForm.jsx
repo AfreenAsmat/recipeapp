@@ -101,7 +101,7 @@ function RecipeForm({recipe, cuisines = []}) {
     
   return (
     <>
-    <h1 className=''>Add your favorite recipe.</h1>
+    <h1 className='text-xl font-bold dark:text-gray-100'>Add your favorite recipe.</h1>
         <form onSubmit={handleSubmit(onSubmit)}
         className='mx-auto max-w-5xl'>
         <div className='grid grid-cols-1 lg:grid-cols-3 gap-6'>
@@ -118,7 +118,7 @@ function RecipeForm({recipe, cuisines = []}) {
             )}
             </div>
             <div>
-                <label className='block font-medium mb-2'>Ingredients</label>
+                <label className='block font-medium mb-2 dark:text-gray-200'>Ingredients</label>
                 <div className='space-y-3'>
                     {fields.map((field, index) => (
                         <div key={field.id} className='flex gap-2'>
@@ -134,7 +134,7 @@ function RecipeForm({recipe, cuisines = []}) {
                             bgColor='bg-gray-200'
                             textColor='text-gray-800'
                             onClick={() => remove(index)}
-                            className='shrink-0'>
+                            className='shrink-0 dark:text-gray-900'>
                                 Remove
                             </Button>
                         </div>
@@ -153,13 +153,13 @@ function RecipeForm({recipe, cuisines = []}) {
                 )}
             </div>
             <div>
-                <label className='block font-medium mb-2'>
+                <label className='block font-medium mb-2 dark:text-gray-200'>
                     Instructions
                     </label>
                 <textarea 
                 rows={8}
             placeholder = 'Instructions'
-            className = 'w-full border border-gray-200 rounded-lg focus:outline-none p-3 focus:ring'
+            className = 'w-full border border-gray-200 rounded-lg focus:outline-none p-3 focus:ring dark:bg-gray-600 dark:border-gray-400'
             {...register("instruction",{required: "Instructions required"})}
             />
             {errors.instruction && (
@@ -172,7 +172,7 @@ function RecipeForm({recipe, cuisines = []}) {
 
         <div className='space-y-6'>
             <div>
-                <label className='block font-medium mb-2'>Recipe Image</label>
+                <label className='block font-medium mb-2 dark:text-gray-200'>Recipe Image</label>
                 {existingImageUrl && (
                     <img src={existingImageUrl}
                      alt={recipe?.title || "Recipe Image"}
@@ -182,7 +182,7 @@ function RecipeForm({recipe, cuisines = []}) {
                 <Input
                 type='file'
                 accept="image/png, image/jpeg, image/jpg, image/gif"
-                className="w-full text-sm"
+                className="w-full text-sm "
                 {...register("image", {required: !recipe})}
                 />
                 {!recipe && errors.image && (
@@ -230,10 +230,10 @@ function RecipeForm({recipe, cuisines = []}) {
             </div>
 
             <div>
-                <label className='block font-medium mb-2'>Diet Types</label>
+                <label className='block font-medium mb-2 dark:text-gray-200 '>Diet Types</label>
                 <div className='grid grid-cols-2 gap-2'>
                     {DIET_OPTIONS.map((opt) => (
-                        <label key={opt} className='flex items-center gap-2'>
+                        <label key={opt} className='flex items-center gap-2 dark:text-gray-300' >
                             <input 
                             type="checkbox"
                             value={opt}
@@ -247,9 +247,9 @@ function RecipeForm({recipe, cuisines = []}) {
             </div>
             {Array.isArray(cuisines) && cuisines.length > 0 && (
                 <div>
-                    <label className='block font-medium mb-2'>Cuisine</label>
+                    <label className='block font-medium mb-2 dark:text-gray-200'>Cuisine</label>
                     <select
-                    className='w-full rounded-lg border border-gray-200 p-2.5'
+                    className='w-full rounded-lg border border-gray-200 dark:border-gray-700 dark:bg-gray-600 dark:text-gray-300 p-2.5'
                     {...register("cuisineId")}
                     defaultValue={recipe?.cuisineId || ""}
                     >
